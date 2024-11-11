@@ -43,7 +43,8 @@ export default [
       'react/prop-types': 'off',
       'semi': ['error', 'always'], // 항상 세미콜론 사용
       'indent': ['error', 2], // 들여쓰기는 2칸
-      'max-len': ['error', { code: 80 }], // 한 줄 최대 80자
+      'max-len': ['warn', { code: 80 }], // 한 줄 최대 80자
+      'react/no-unescaped-entities': 'off'
     },
     settings: {
       react: {
