@@ -1,17 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
 import PostItem from 'components/Main/PostItem';
-
-const POST_ITEM_DATA = {
-  title: 'Post Item Title',
-  date: '2020.01.29.',
-  categories: ['Web', 'Frontend', 'Testing'],
-  summary:
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident repellat doloremque fugit quis rem temporibus! Maxime molestias, suntrem debitis odit harum impedit. Modi cupiditate harum dignissimos eos in corrupti!',
-  thumbnail:
-    'https://images.unsplash.com/photo-1721332149069-a470150ef51c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8',
-  link: 'https://www.google.co.kr/',
-};
+import { PostListItemType } from 'types/PostItem.types';
 
 const PostListWrapper = styled.div`
   display: grid;
@@ -28,13 +18,20 @@ const PostListWrapper = styled.div`
   }
 `;
 
-const PostList: FunctionComponent = function () {
+interface PostListProps {
+  posts: PostListItemType[]
+}
+
+const PostList: FunctionComponent<PostListProps> = function ({ posts }) {
   return (
     <PostListWrapper>
-      <PostItem {...POST_ITEM_DATA} />
-      <PostItem {...POST_ITEM_DATA} />
-      <PostItem {...POST_ITEM_DATA} />
-      <PostItem {...POST_ITEM_DATA} />
+      {posts.map(post => (
+        <PostItem 
+          key={post.node.id} 
+          {...post.node.frontmatter} 
+          link={`/${post.node.id}`} 
+        />
+      ))}
     </PostListWrapper>
   );
 };
