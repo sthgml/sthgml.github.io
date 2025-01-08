@@ -1,6 +1,27 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import ProfileImage from 'components/Main/ProfileImage';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+
+interface IntroductionProps {
+  profileImage: IGatsbyImageData
+}
+
+export default function Introduction ({
+  profileImage,
+}: IntroductionProps) {
+  return (
+    <Background>
+      <Wrapper>
+        <ProfileImage profileImage={profileImage} />
+        <div>
+          <SubTitle>Nice to Meet You,</SubTitle>
+          <Title>I am Junior Frontend Developer Sohee.</Title>
+        </div>
+      </Wrapper>
+    </Background>
+  );
+};
 
 const Background = styled.div`
   width: 100%;
@@ -41,19 +62,3 @@ const Title = styled.div`
     font-size: 25px;
   }
 `;
-const Introduction: FunctionComponent = function () {
-  return (
-    <Background>
-      <Wrapper>
-        <ProfileImage />
-
-        <div>
-          <SubTitle>Nice to Meet You,</SubTitle>
-          <Title>I am Junior Frontend Developer Sohee.</Title>
-        </div>
-      </Wrapper>
-    </Background>
-  );
-};
-
-export default Introduction;
