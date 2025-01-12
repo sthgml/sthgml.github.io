@@ -5,6 +5,7 @@ interface PostContentProps {
   html: string
 }
 
+
 const MarkdownRenderer = styled.div`
   // Renderer Style
   display: flex;
@@ -98,6 +99,34 @@ const MarkdownRenderer = styled.div`
   code[class*='language-'],
   pre[class*='language-'] {
     tab-size: 2;
+  }
+
+  // Markdown Responsive Design
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 80px 20px;
+    line-height: 1.6;
+    font-size: 14px;
+
+    h1 {
+      font-size: 23px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    h3 {
+      font-size: 17px;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    hr {
+      margin: 50px 0;
+    }
   }
 `
 
