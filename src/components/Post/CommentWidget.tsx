@@ -1,7 +1,7 @@
 import React, { createRef, FunctionComponent, useEffect } from 'react'
 
 const src = 'https://utteranc.es/client.js'
-const repo = 'sthgml/[username].github.io' // 자신 계정의 레포지토리로 설정
+const repo = 'sthgml/sthgml.github.io' // 자신 계정의 레포지토리로 설정
 
 type UtterancesAttributesType = {
   src: string
@@ -24,7 +24,7 @@ const CommentWidget: FunctionComponent = function () {
     const attributes: UtterancesAttributesType = {
       src,
       repo,
-      'issue-term': 'pathname',
+      'issue-term': 'title',
       label: 'Comment',
       theme: `github-light`,
       crossorigin: 'anonymous',
