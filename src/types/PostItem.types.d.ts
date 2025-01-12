@@ -12,6 +12,24 @@ export interface PostFrontmatterType {
   }
 }
 
+export interface Postype {
+  title: string
+  date: string
+  categories: string[]
+  summary: string
+  thumbnail: {
+    childImageSharp: {
+      gatsbyImageData: IGatsbyImageData
+    }
+  }
+}
+
+export interface PostType {
+  node: {
+    frontmatter: PostFrontmatterType
+  }
+}
+
 export interface PostListItemType {
   node: {
     id: string

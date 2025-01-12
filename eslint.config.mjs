@@ -64,7 +64,7 @@ export default [
     plugins: {
       '@typescript-eslint': typescript,
     },
-    rules: {
+    rules: { 
       '@typescript-eslint/no-unused-vars': ['warn'],
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/explicit-module-boundary-types': 'off',

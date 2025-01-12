@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
 import PostItem from 'components/Main/PostItem';
+import useInfiniteScroll from 'hooks/useInfiniteScroll';
 import { PostListItemType } from 'types/PostItem.types';
 
 const PostListWrapper = styled.div`
@@ -19,17 +19,21 @@ const PostListWrapper = styled.div`
 `;
 
 interface PostListProps {
-  posts: PostListItemType[]
+  selectedCategory: string;
+  posts: PostListItemType[];
 }
 
-const PostList: FunctionComponent<PostListProps> = function ({ posts }) {
+function PostList({ selectedCategory, posts }: PostListProps) {
+
+  const { containerRef, postList } = useInfiniteScroll(selectedCategory, posts)
+
   return (
-    <PostListWrapper>
-      {posts.map(post => (
-        <PostItem 
-          key={post.node.id} 
-          {...post.node.frontmatter} 
-          link={`/${post.node.id}`} 
+    <PostListWrapper ref={containerRef}>
+      {postList.map(post => (
+        <PostItem
+          key={post.node.id}
+          {...post.node.frontmatter}
+          link={`/${post.node.id}`}
         />
       ))}
     </PostListWrapper>
