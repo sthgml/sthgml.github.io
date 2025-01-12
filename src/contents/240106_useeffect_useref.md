@@ -2,7 +2,7 @@
 date: '2024-01-06'
 title: 'useEffect 무한루프, 초기값 설정, 완벽가이드(번역)'
 categories: ['트러블슈팅', '바이언스', '학부생인턴', 'rete.js']
-summary: 'retejs 라이브러리 공식 문서와 원본 레포 이슈 확인하여 노드 생성시 오류 원인 분석 및 해결하여 최초 로딩 시간 단축 (1.6s → 1.0s) 및 중복 생성되는 노드를 제거하기 위해 BE, 딥러닝 개발자 분과 소통하여 데이터구조 변경하여 해결'
+summary: 'CustomInput 컴포넌트 개발 중 useEffect 무한 루프 문제, 초기값이 의도한대로 설정되지 않는 문제들을 useEffect 사용법을 학습 및 정리하여 의존 배열을 수정하여 해결한 경험'
 thumbnail: './images/vience-mlops-train-panel-light2.png'
 ---
 
