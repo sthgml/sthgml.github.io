@@ -19,7 +19,7 @@ const PostItem: FunctionComponent<PostFrontmatterType & {link: string}> = functi
 }) {
   return (
     <PostItemWrapper to={link}>
-      <ThumnailImage 
+      <ThumbnailImage 
         alt="Post Item Image" 
         image={gatsbyImageData}
       />
@@ -40,10 +40,11 @@ const PostItem: FunctionComponent<PostFrontmatterType & {link: string}> = functi
 
 export default PostItem;
 
-const ThumnailImage = styled(GatsbyImage)`
-width: 100%;
-height: 200px;
-border-radius: 10px 10px 0 0;
+const ThumbnailImage = styled(GatsbyImage)`
+  width: 100%;
+  height: 200px;
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
 `;
 
 const PostItemWrapper = styled(Link)`
@@ -64,14 +65,6 @@ const PostItemContent = styled.div`
   display: flex;
   flex-direction: column;
   padding: 15px;
-`;
-
-
-const ThumbnailImage = styled.img`
-  width: 100%;
-  height: 200px;
-  border-radius: 10px 10px 0 0;
-  object-fit: cover;
 `;
 
 const Title = styled.div`

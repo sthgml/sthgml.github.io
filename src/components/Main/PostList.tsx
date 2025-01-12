@@ -27,13 +27,14 @@ function PostList({ selectedCategory, posts }: PostListProps) {
 
   const { containerRef, postList } = useInfiniteScroll(selectedCategory, posts)
 
+  console.log(postList)
   return (
     <PostListWrapper ref={containerRef}>
       {postList.map(post => (
         <PostItem
           key={post.node.id}
           {...post.node.frontmatter}
-          link={`/${post.node.id}`}
+          link={post.node.fields?.slug}
         />
       ))}
     </PostListWrapper>

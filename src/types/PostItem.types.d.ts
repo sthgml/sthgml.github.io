@@ -33,6 +33,9 @@ export interface PostType {
 export interface PostListItemType {
   node: {
     id: string
+    fields: {
+      slug: string
+    }
     frontmatter: PostFrontmatterType
   }
 }

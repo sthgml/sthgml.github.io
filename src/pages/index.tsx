@@ -1,20 +1,12 @@
-import React, { FunctionComponent, useMemo } from 'react';
-import styled from '@emotion/styled';
-import GlobalStyle from 'components/Common/GlobalStyle';
-import Introduction from 'components/Main/Introduction';
-import Footer from 'components/Common/Footer';
+import Template from 'components/Common/Template';
 import CategoryList, { CategoryListProps } from 'components/Main/CategoryList';
+import Introduction from 'components/Main/Introduction';
 import PostList from 'components/Main/PostList';
 import { graphql } from 'gatsby';
-import { PostListItemType, PostType } from 'types/PostItem.types';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import queryString, { ParsedQuery } from 'query-string';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-`;
+import { FunctionComponent, useMemo } from 'react';
+import { PostListItemType, PostType } from 'types/PostItem.types';
 
 interface IndexPageProps {
   location: {
@@ -74,16 +66,14 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
     
 
   return (
-    <Container>
-      <GlobalStyle />
-      <Introduction profileImage={gatsbyImageData} />
-      <CategoryList 
-        selectedCategory={selectedCategory} 
-        categoryList={categoryList} 
-      />
-      <PostList selectedCategory={selectedCategory} posts={posts} />
-      <Footer />
-    </Container>
+      <Template>
+        <Introduction profileImage={gatsbyImageData} />
+        <CategoryList 
+          selectedCategory={selectedCategory} 
+          categoryList={categoryList} 
+        />
+        <PostList selectedCategory={selectedCategory} posts={posts} />
+      </Template>
   );
 };
 
@@ -98,6 +88,9 @@ export const getPostList = graphql`
       edges {
         node {
           id
+          fields {
+            slug
+          }
           frontmatter {
             title
             summary
