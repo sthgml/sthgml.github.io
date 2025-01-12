@@ -15,7 +15,13 @@ module.exports = {
     siteUrl: 'https://sthgml.github.io/',
   },
   plugins: [
-      'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
+    'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {

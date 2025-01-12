@@ -22,16 +22,19 @@ const useInfiniteScroll = function (
     [selectedCategory],
   );
 
-  const observer: IntersectionObserver = new IntersectionObserver(
-    (entries, observer) => {
-      // 항상 가장 마지막 요소만 관찰하기 때문에 entries에 담긴 요소는 하나 뿐
-      if (!entries[0].isIntersecting) return;
+  const observer: MutableRefObject<IntersectionObserver | null> =
+    useRef<IntersectionObserver>(null)
 
-      setCount(value => value + 1);
-      // count 값을 변경시키고 나면 즉시 관찰을 중단합니다.
-      observer.disconnect();
-    },
-  )
+  // 빌드 시에 Window API 를 사용할 수 없어 module Not Found error가 나지 않도록
+  // 렌더링 이후에 실행되는 useEffect에 사용합니다.
+  useEffect(() => {
+    observer.current = new IntersectionObserver((entries, observer) => {
+      if (!entries[0].isIntersecting) return
+
+      setCount(value => value + 1)
+      observer.unobserve(entries[0].target)
+    })
+  }, [])
 
   // 선택된 카테고리가 바뀌면 초기화 합니다.
   useEffect(() => setCount(1), [selectedCategory])
@@ -45,7 +48,7 @@ const useInfiniteScroll = function (
       return;
     }
 
-    observer.observe( // 항상 가장 마지막 요소만을 관측합니다.
+    observer.current?.observe( // 항상 가장 마지막 요소만을 관측합니다.
       containerRef.current.children[containerRef.current.children.length - 1],
     )
   }, [count, selectedCategory])
