@@ -22,7 +22,7 @@ export default function Template({
   return (
     <Container>
       <Helmet>
-        <title>Sohee's Dev Blog</title>
+        <title>Sohee's Devlog</title>
 
         <meta name="description" content="항상 발전하기 위해 노력하는 주니어 개발자입니다." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,8 +39,8 @@ export default function Template({
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
-        <meta name="twitter:site" content="@사용자이름" />
-        <meta name="twitter:creator" content="@사용자이름" />
+        <meta name="twitter:site" content="@sohee" />
+        <meta name="twitter:creator" content="@sohee" />
 
         <html lang="ko" />
       </Helmet>
