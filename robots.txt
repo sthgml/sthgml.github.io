@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://sthgml.github.io/sitemap-index.xml
-Host: https://sthgml.github.io
