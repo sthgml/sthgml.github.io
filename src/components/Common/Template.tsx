@@ -1,11 +1,12 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode } from 'react';
 import styled from "@emotion/styled";
 import GlobalStyle from './GlobalStyle';
 import Footer from './Footer';
 import { Helmet } from 'react-helmet';
+import Header from './Header';
 
 type TemplateProps = {
-    title: string
+  title: string 
   description: string
   url: string
   image: string
@@ -13,7 +14,7 @@ type TemplateProps = {
 }
 
 export default function Template({
-    title,
+  title,
   description,
   url,
   image,
@@ -44,12 +45,12 @@ export default function Template({
 
         <html lang="ko" />
       </Helmet>
-      
       <GlobalStyle />
-      {children}
+      <Header /> 
+      {children} 
       <Footer />
     </Container>
-  )
+  );
 }
 
 const Container = styled.main`
