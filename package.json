@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "sohee-devlog",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "개츠비로 만든 sohee의 devlog",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Sohee Park <sthgml@naver.com>",
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
@@ -68,9 +68,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/sthgml/sthgml.github.io"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/sthgml/sthgml.github.io/issues"
   }
 }

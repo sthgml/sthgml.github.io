@@ -3,12 +3,12 @@ import styled from '@emotion/styled';
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface ProfileImageProps {
-  profileImage: IGatsbyImageData
+  profileImage: IGatsbyImageData;
 }
 
-export default function ProfileImage ({profileImage}: ProfileImageProps) {
+export default function ProfileImage({ profileImage }: ProfileImageProps) {
   return <ProfileImageWrapper image={profileImage} alt="Profile Image" />;
-};
+}
 
 const ProfileImageWrapper = styled(GatsbyImage)`
   width: 120px;

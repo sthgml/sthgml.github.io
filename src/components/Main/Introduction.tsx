@@ -4,12 +4,10 @@ import ProfileImage from 'components/Main/ProfileImage';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface IntroductionProps {
-  profileImage: IGatsbyImageData
+  profileImage: IGatsbyImageData;
 }
 
-export default function Introduction ({
-  profileImage,
-}: IntroductionProps) {
+export default function Introduction({ profileImage }: IntroductionProps) {
   return (
     <Background>
       <Wrapper>
@@ -21,11 +19,10 @@ export default function Introduction ({
       </Wrapper>
     </Background>
   );
-};
+}
 
 const Background = styled.div`
   width: 100%;
-  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
   color: #ffffff;
 `;
 const Wrapper = styled.div`

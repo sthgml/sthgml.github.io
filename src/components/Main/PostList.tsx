@@ -24,10 +24,9 @@ interface PostListProps {
 }
 
 function PostList({ selectedCategory, posts }: PostListProps) {
+  const { containerRef, postList } = useInfiniteScroll(selectedCategory, posts);
 
-  const { containerRef, postList } = useInfiniteScroll(selectedCategory, posts)
-
-  console.log(postList)
+  console.log(postList);
   return (
     <PostListWrapper ref={containerRef}>
       {postList.map(post => (
@@ -39,6 +38,6 @@ function PostList({ selectedCategory, posts }: PostListProps) {
       ))}
     </PostListWrapper>
   );
-};
+}
 
 export default PostList;

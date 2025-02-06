@@ -1,34 +1,37 @@
-import Template from 'components/Common/Template'
-import CommentWidget from 'components/Post/CommentWidget'
-import PostContent from 'components/Post/PostContent'
-import PostHead from 'components/Post/PostHead'
-import { graphql } from 'gatsby'
+import Template from 'components/Common/Template';
+import CommentWidget from 'components/Post/CommentWidget';
+import PostContent from 'components/Post/PostContent';
+import PostHead from 'components/Post/PostHead';
+import { graphql } from 'gatsby';
 
-import React, { FunctionComponent } from 'react'
-import { PostFrontmatterType } from 'types/PostItem.types'
+import React, { FunctionComponent } from 'react';
+import { PostFrontmatterType } from 'types/PostItem.types';
 // import { PostPageItemType } from 'types/PostItem.types' // 바로 아래에서 정의할 것입니다
 
-export type PostPageItemType = {
+export interface PostPageItemType {
   node: {
-    html: string
-    frontmatter: PostFrontmatterType
-  }
+    html: string;
+    frontmatter: PostFrontmatterType;
+  };
 }
 
-type PostTemplateProps = {
+interface PostTemplateProps {
   data: {
     allMarkdownRemark: {
-      edges: PostPageItemType[] // 존재하지 않는 타입이므로 에러가 발생하지만 일단 작성해주세요
-    }
-  }
+      edges: PostPageItemType[]; // 존재하지 않는 타입이므로 에러가 발생하지만 일단 작성해주세요
+    };
+  };
   location: {
-    href: string
-  }
+    href: string;
+  };
 }
 
-const PostTemplate: FunctionComponent<PostTemplateProps> = function ({data: {
-  allMarkdownRemark: { edges },
-  }, location: { href },},) {
+const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
+  data: {
+    allMarkdownRemark: { edges },
+  },
+  location: { href },
+}) {
   const {
     node: {
       html,
@@ -45,24 +48,21 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({data: {
     },
   } = edges[0];
 
-  return <Template
-     title={title}
-    description={summary}
-    url={href}
-    image={publicURL}
-      >
-    <PostHead
+  return (
+    <Template title={title} description={summary} url={href} image={publicURL}>
+      <PostHead
         title={title}
         date={date}
         categories={categories}
         thumbnail={gatsbyImageData}
-    />
-    <PostContent html={html} />
-    <CommentWidget />
-  </Template>
-}
+      />
+      <PostContent html={html} />
+      <CommentWidget />
+    </Template>
+  );
+};
 
-export default PostTemplate
+export default PostTemplate;
 
 export const queryMarkdownDataBySlug = graphql`
   query queryMarkdownDataBySlug($slug: String) {
@@ -86,4 +86,4 @@ export const queryMarkdownDataBySlug = graphql`
       }
     }
   }
-`
+`;

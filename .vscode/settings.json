@@ -1,13 +1,9 @@
 {
-  "editor.formatOnSave": true,     
-  "editor.rulers": [
-      80
-  ],
+  "editor.formatOnSave": true,
+  "editor.rulers": [80],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
+    "source.fixAll.eslint": "always"
   },
   "trailing-spaces.trimOnSave": true,
-  "cSpell.words": [
-    "sthgml"
-  ]
+  "cSpell.words": ["sthgml"]
 }

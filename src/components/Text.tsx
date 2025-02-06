@@ -5,8 +5,8 @@ type TextProps = {
 };
 
 const Text: FunctionComponent<TextProps> = function ({ text }) {
-  console.log('sohee')
-  return <div>{text}</div>
+  console.log('sohee');
+  return <div>{text}</div>;
 };
 
 export default Text;

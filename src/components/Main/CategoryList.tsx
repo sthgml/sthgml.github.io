@@ -3,10 +3,10 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 
 export interface CategoryListProps {
-  selectedCategory: string
+  selectedCategory: string;
   categoryList: {
-    [key: string]: number
-  }
+    [key: string]: number;
+  };
 }
 
 const CategoryListWrapper = styled.div`
@@ -22,7 +22,7 @@ const CategoryListWrapper = styled.div`
   }
 `;
 
-const CategoryItem = styled(Link)<{active: boolean}>`
+const CategoryItem = styled(Link)<{ active: boolean }>`
   margin-right: 20px;
   padding: 5px 0;
   font-size: 18px;

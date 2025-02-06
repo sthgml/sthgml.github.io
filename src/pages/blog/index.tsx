@@ -1,3 +1,4 @@
+import React from 'react';
 import Template from 'components/Common/Template';
 import CategoryList, { CategoryListProps } from 'components/Main/CategoryList';
 import Introduction from 'components/Main/Introduction';
@@ -8,41 +9,37 @@ import queryString, { ParsedQuery } from 'query-string';
 import { FunctionComponent, useMemo } from 'react';
 import { PostListItemType, PostType } from 'types/PostItem.types';
 
-type IndexPageProps = {
+interface IndexPageProps {
   location: {
-    search: string
-  }
+    search: string;
+  };
   data: {
     site: {
       siteMetadata: {
-        title: string
-        description: string
-        siteUrl: string
-      }
-    }
+        title: string;
+        description: string;
+        siteUrl: string;
+      };
+    };
     allMarkdownRemark: {
-      edges: PostListItemType[]
-    }
+      edges: PostListItemType[];
+    };
     file: {
       childImageSharp: {
-        gatsbyImageData: IGatsbyImageData
-      }
-      publicURL: string
-    }
-  }
+        gatsbyImageData: IGatsbyImageData;
+      };
+      publicURL: string;
+    };
+  };
 }
 
 const IndexPage: FunctionComponent<IndexPageProps> = function ({
   location: { search },
   data: {
     site: {
-      siteMetadata: {
-        title,
-        description,
-        siteUrl
-      }
+      siteMetadata: { title, description, siteUrl },
     },
-    allMarkdownRemark: { edges : posts },
+    allMarkdownRemark: { edges: posts },
     file: {
       childImageSharp: { gatsbyImageData },
       publicURL,
@@ -70,16 +67,15 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
             if (list[category] === undefined) list[category] = 1;
             else list[category]++;
           });
-    
+
           list['All']++;
-    
+
           return list;
         },
         { All: 0 },
       ),
     [],
   );
-    
 
   return (
     <Template
@@ -88,13 +84,13 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
       url={siteUrl}
       image={publicURL}
     >
-        <Introduction profileImage={gatsbyImageData} />
-        <CategoryList 
-          selectedCategory={selectedCategory} 
-          categoryList={categoryList} 
-        />
-        <PostList selectedCategory={selectedCategory} posts={posts} />
-      </Template>
+      <Introduction profileImage={gatsbyImageData} />
+      <CategoryList
+        selectedCategory={selectedCategory}
+        categoryList={categoryList}
+      />
+      <PostList selectedCategory={selectedCategory} posts={posts} />
+    </Template>
   );
 };
 
@@ -136,7 +132,7 @@ export const getPostList = graphql`
       childImageSharp {
         gatsbyImageData(width: 120, height: 120)
       }
-      publicURL 
+      publicURL
     }
   }
 `;

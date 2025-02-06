@@ -1,10 +1,9 @@
-import React, { FunctionComponent } from 'react'
-import styled from '@emotion/styled'
+import React, { FunctionComponent } from 'react';
+import styled from '@emotion/styled';
 
 interface PostContentProps {
-  html: string
+  html: string;
 }
-
 
 const MarkdownRenderer = styled.div`
   // Renderer Style
@@ -128,10 +127,10 @@ const MarkdownRenderer = styled.div`
       margin: 50px 0;
     }
   }
-`
+`;
 
 const PostContent: FunctionComponent<PostContentProps> = function ({ html }) {
-  return <MarkdownRenderer dangerouslySetInnerHTML={{ __html: html }} />
-}
+  return <MarkdownRenderer dangerouslySetInnerHTML={{ __html: html }} />;
+};
 
-export default PostContent
+export default PostContent;

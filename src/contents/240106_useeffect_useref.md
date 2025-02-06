@@ -6,7 +6,7 @@ summary: 'CustomInput 컴포넌트 개발 중 useEffect 무한 루프 문제, �
 thumbnail: './images/vience-mlops-train-panel-light2.png'
 ---
 
-# 240106\_useEffect\_useRef
+# 240106_useEffect_useRef
 
 ## 개요
 
@@ -14,9 +14,9 @@ thumbnail: './images/vience-mlops-train-panel-light2.png'
 
 ## 바이언스 MLOps 소개
 
-* 코딩 없이 **노드를 연결하면** python 코드로 변환하여 딥러닝 모델을 만들고&#x20;
-* 서버에서 딥러닝 모델을 학습을 시키고,
-* &#x20;그 결과를 시각적으로 확인&#x20;
+- 코딩 없이 **노드를 연결하면** python 코드로 변환하여 딥러닝 모델을 만들고&#x20;
+- 서버에서 딥러닝 모델을 학습을 시키고,
+- &#x20;그 결과를 시각적으로 확인&#x20;
 
 할 수 있는 시각적 프로그래밍 서비스입니다.&#x20;
 
@@ -34,11 +34,11 @@ right panel로 트리의 각 노드에 저장된 property(options)를 조작하�
 3. 유저로 인해 변경된 데이터를 UI에 반영
 4. 위 모든 상황에 해당되지 않으면 초기값을 반영
 
-|             | 동작              |                 |
-| ----------- | --------------- | --------------- |
-| **`Node { options }`** | 데이터 저장          | 데이터 업데이트        |
-| -           | _⬇️ 저장된 데이터 전달_ | _⬆️ 사용자 입력값 전달_ |
-| **인풋 컴포넌트**     | 저장된 데이터 표시      | 사용자 입력값 받기      |
+|                        | 동작                    |                         |
+| ---------------------- | ----------------------- | ----------------------- |
+| **`Node { options }`** | 데이터 저장             | 데이터 업데이트         |
+| -                      | _⬇️ 저장된 데이터 전달_ | _⬆️ 사용자 입력값 전달_ |
+| **인풋 컴포넌트**      | 저장된 데이터 표시      | 사용자 입력값 받기      |
 
 <br>
 
@@ -72,7 +72,7 @@ right panel로 트리의 각 노드에 저장된 property(options)를 조작하�
    2. 값이 없을 때 자동으로 설정되는 초기값이 나타남
 2. 원인
    1. option의 값을 useRef로 `prevOption`에 전달하는 시점보다
-   2. 최하위의 input 컴포넌트들이 렌더링이 완료되고  componentDidMount()처럼 사용하는 빈 useEffect가 실행되어 `prevOption`의 값을 확인하는 시점이 더 앞이다.
+   2. 최하위의 input 컴포넌트들이 렌더링이 완료되고 componentDidMount()처럼 사용하는 빈 useEffect가 실행되어 `prevOption`의 값을 확인하는 시점이 더 앞이다.
 3. 해결 방안
    1. 이를 해결하고자 useEffect의 실행 시점,
    2. 그에 따른 상태와 props 값을 전달 받는 시점에 대해서 알아보았고,&#x20;
@@ -92,7 +92,7 @@ right panel로 트리의 각 노드에 저장된 property(options)를 조작하�
 
 아래는 JavaScript의 작동 방식에 대해서 공부한 내용과 useEffect에 대해서 공부하기 위해 [A Complete Guide to useEffect](https://overreacted.io/a-complete-guide-to-useeffect/)라는 글을 한글로 번역한 내용입니다.
 
-***
+---
 
 ## Effect를 사용하기 위한 완전 가이드
 
@@ -103,15 +103,13 @@ effects에 대해서 이야기하기 전에, 우리는 rendering에 대한 이�
 ```jsx
 function Counter() {
   const [count, setCount] = useState(0);
- 
+
   return (
     <div>
-        // --- 여기!! ----
+      // --- 여기!! ----
       <p>You clicked {count} times</p>
-       // ----
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      // ----
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   );
 }
@@ -124,7 +122,7 @@ function Counter() {
 ```jsx
 const count = 42;
 // ...
-<p>You clicked {count} times</p>
+<p>You clicked {count} times</p>;
 // ...
 ```
 
@@ -147,22 +145,18 @@ const count = 42;
 ```jsx
 function Counter() {
   const [count, setCount] = useState(0);
- 
+
   function handleAlertClick() {
     setTimeout(() => {
       alert('You clicked on: ' + count);
     }, 3000);
   }
- 
+
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-      <button onClick={handleAlertClick}>
-        Show alert
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+      <button onClick={handleAlertClick}>Show alert</button>
     </div>
   );
 }
@@ -170,23 +164,23 @@ function Counter() {
 
 제가 이 일련의 과정을 실행해본다고 해봅시다.
 
-* 카운터를 3까지 증가시킵니다.
-* alert 보여주기 버튼을 누릅니다.
-* timeout 버저가 울리기 전에 5까지 증가시킵니다.
+- 카운터를 3까지 증가시킵니다.
+- alert 보여주기 버튼을 누릅니다.
+- timeout 버저가 울리기 전에 5까지 증가시킵니다.
 
 경고창이 뭐라고 보여줄 것 같으신가요? 경고창이 뜨는 당시의 카운터 상태 값인 5일까요? 아니면 show alert 버튼을 클릭한 시점의 상태값인 3일까요?
 
-***
+---
 
 스포 주의
 
-***
+---
 
 가서 직접 해보세요!
 
 만약 이 행동이 이해가 되지 않는다면 현재 수신자의 id가 상태로 저장되어 있고 send 버튼이 있는 채팅 앱과 같은 더 실용적인 예시를 상상해 봅시다. 경고창은 그 버튼이 클릭되던 당시의 상태값을 "포착"합니다. 다른 행동을 실행할 수 있는 방법들도 있지만, 저는 지금으로써는 기본적인 상황에만 집중하려고 합니다. 멘탈 모델을 구축할 때는 opt-in escape hatches(원할 때 시스템의 일부를 비활성화하거나 변경하기 위한 옵션, 시스템의 일부를 유연하게 컨트롤 하는 방법, 효과적으로 관리하고 적응하는 방법)로부터 저항을 최소화하는 경로를 구분해내는 것(그냥 빠르고 효율적인 방법을 찾는 것이라는 뜻)이 중요합니다.
 
-***
+---
 
 하지만 그게 어떻게 작동하나요?
 
@@ -201,14 +195,14 @@ function sayHi(person) {
     alert('Hello, ' + name);
   }, 3000);
 }
- 
-let someone = {name: 'Dan'};
+
+let someone = { name: 'Dan' };
 sayHi(someone);
- 
-someone = {name: 'Yuzhi'};
+
+someone = { name: 'Yuzhi' };
 sayHi(someone);
- 
-someone = {name: 'Dominic'};
+
+someone = { name: 'Dominic' };
 sayHi(someone);
 ```
 
@@ -228,7 +222,7 @@ function Counter() {
   }
   // ...
 }
- 
+
 // After a click, our function is called again
 function Counter() {
   const count = 1; // Returned by useState()
@@ -240,7 +234,7 @@ function Counter() {
   }
   // ...
 }
- 
+
 // After another click, our function is called again
 function Counter() {
   const count = 2; // Returned by useState()
@@ -266,10 +260,10 @@ function Counter() {
     }, 3000);
   }
   // ...
-  <button onClick={handleAlertClick} /> // The one with 0 inside
+  <button onClick={handleAlertClick} />; // The one with 0 inside
   // ...
 }
- 
+
 // After a click, our function is called again
 function Counter() {
   // ...
@@ -279,10 +273,10 @@ function Counter() {
     }, 3000);
   }
   // ...
-  <button onClick={handleAlertClick} /> // The one with 1 inside
+  <button onClick={handleAlertClick} />; // The one with 1 inside
   // ...
 }
- 
+
 // After another click, our function is called again
 function Counter() {
   // ...
@@ -292,7 +286,7 @@ function Counter() {
     }, 3000);
   }
   // ...
-  <button onClick={handleAlertClick} /> // The one with 2 inside
+  <button onClick={handleAlertClick} />; // The one with 2 inside
   // ...
 }
 ```
@@ -312,17 +306,15 @@ Side Note: 나는 handleAlertClick 함수 위에서 함수 바로 안으로 구�
 ```jsx
 function Counter() {
   const [count, setCount] = useState(0);
- 
+
   useEffect(() => {
     document.title = `You clicked ${count} times`;
   });
- 
+
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   );
 }
@@ -348,11 +340,11 @@ function Counter() {
     // Effect function from first render
     () => {
       document.title = `You clicked ${0} times`;
-    }
+    },
   );
   // ...
 }
- 
+
 // After a click, our function is called again
 function Counter() {
   // ...
@@ -360,11 +352,11 @@ function Counter() {
     // Effect function from second render
     () => {
       document.title = `You clicked ${1} times`;
-    }
+    },
   );
   // ...
 }
- 
+
 // After another click, our function is called again
 function Counter() {
   // ...
@@ -372,7 +364,7 @@ function Counter() {
     // Effect function from third render
     () => {
       document.title = `You clicked ${2} times`;
-    }
+    },
   );
   // ..
 }
@@ -384,7 +376,7 @@ function Counter() {
 
 엄격히 말하면 그것들은 복잡한 문법이나 런타임 오버헤드 없이 훅 구성을 허용하기 위한 것이 아닙니다. 그것은 멘탈 모델내에서 우리가 이벤트 핸들러가 동작하는 것과 같은 방식으로 특정 렌더에 속하는 이펙트 함수를 구축할 수 있게 하는 것입니다.
 
-***
+---
 
 우리가 견고한 이해를 확실히 하기 위해서 우리의 첫 번째 렌더를 복기해 봅시다.
 
@@ -403,19 +395,17 @@ function Counter() {
 ```jsx
 function Counter() {
   const [count, setCount] = useState(0);
- 
+
   useEffect(() => {
     setTimeout(() => {
       console.log(`You clicked ${count} times`);
     }, 3000);
   });
- 
+
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   );
 }
@@ -448,10 +438,10 @@ function SearchResults() {
   async function fetchData() {
     // ...
   }
- 
+
   useEffect(() => {
     fetchData();
-  }, []); 
+  }, []);
   // 이거 괜찮나요? 아닐 때도 있을 걸요. 더 좋은 방법도 있구요.
 ```
 
@@ -464,9 +454,9 @@ function SearchResults() {
 의존배열이 이펙트 안에서 사용되는 모든 값을 가지고 있다면, 리액트는 언제 재실행되어야 하는지를 알겁니다.
 
 ```jsx
-  useEffect(() => {
-    document.title = 'Hello, ' + name;
-  }, [name]);
+useEffect(() => {
+  document.title = 'Hello, ' + name;
+}, [name]);
 ```
 
 하지만 의존배열을 `[]` 이렇게 명시한다면, 새로운 effect가 실행되지 않겠죠. 이런 경우에 문제는 명확히 보이죠. 하지만 직관은 여러분을 속여요. 클래스 solution이 여러분의 기억 속에서 "튀어 나오는" 다른 경우에 말이죠.
@@ -476,14 +466,14 @@ function SearchResults() {
 ```jsx
 function Counter() {
   const [count, setCount] = useState(0);
- 
+
   useEffect(() => {
     const id = setInterval(() => {
       setCount(count + 1);
     }, 1000);
     return () => clearInterval(id);
   }, []);
- 
+
   return <h1>{count}</h1>;
 }
 ```
@@ -534,9 +524,9 @@ useEffect(() => {
 그러려면, 스스로에게 물어봐야돼요. 우리가 count를 무엇을 위해서 쓰고 있는가? 우리가 그러 오직 setCount를 호출하기 위해서 사용하고 있잖아요. 이런 경우에는 우린 사실 count를 이 스코프에서 전혀 필요하지 않거든요. 우리가 이전 상태에 기반해서 상태를 업데이트 하고 싶을 때는 함수형 업데이트를 사용할 수 있어요.
 
 ```jsx
-setState((prev) => {
-    return prev + 1;
-})
+setState(prev => {
+  return prev + 1;
+});
 ```
 
 하지만 함수형 업데이트도 막 그렇게 좋지는 않아요. 조금 이상해보이고 사용 범위 자체도 매우 제한적이에요. 예를 들어서, 우리가 그 값이 서로에게 의존하는 두개의 상태 변수가 있다면, 혹은 우리가 다음 state를 props에 기반해서 계산해야 한다면, 이 함수형 업데이트가 도움이 되지 않을 거예요. 다행히도, 이러한 함수형 업데이트는 강력한 자매 패턴을 가지고 있습니다. 이름하야 useReducer.
@@ -549,14 +539,14 @@ setState((prev) => {
 function Counter() {
   const [count, setCount] = useState(0);
   const [step, setStep] = useState(1);
- 
+
   useEffect(() => {
     const id = setInterval(() => {
       setCount(c => c + step);
     }, 1000);
     return () => clearInterval(id);
   }, [step]);
- 
+
   return (
     <>
       <h1>{count}</h1>
@@ -581,7 +571,7 @@ function Counter() {
 ```jsx
 const [state, dispatch] = useReducer(reducer, initialState);
 const { count, step } = state;
- 
+
 useEffect(() => {
   const id = setInterval(() => {
     dispatch({ type: 'tick' }); // Instead of setCount(c => c + step);
@@ -601,7 +591,7 @@ const initialState = {
   count: 0,
   step: 1,
 };
- 
+
 function reducer(state, action) {
   const { count, step } = state;
   if (action.type === 'tick') {

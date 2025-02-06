@@ -1,20 +1,20 @@
-import React, { FunctionComponent } from 'react'
-import styled from '@emotion/styled'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import React, { FunctionComponent } from 'react';
+import styled from '@emotion/styled';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 export type PostHeadInfoProps = {
-  title: string
-  date: string
-  categories: string[]
-}
+  title: string;
+  date: string;
+  categories: string[];
+};
 
 const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
   title,
   date,
   categories,
 }) {
-  const goBackPage = () => window.history.back()
+  const goBackPage = () => window.history.back();
 
   return (
     <PostHeadInfoWrapper>
@@ -27,12 +27,10 @@ const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
         <div>{date}</div>
       </PostData>
     </PostHeadInfoWrapper>
-  )
-}
+  );
+};
 
-export default PostHeadInfo
-
-
+export default PostHeadInfo;
 
 const PostHeadInfoWrapper = styled.div`
   display: flex;
@@ -47,7 +45,7 @@ const PostHeadInfoWrapper = styled.div`
     width: 100%;
     padding: 40px 20px;
   }
-`
+`;
 
 const PrevPageIcon = styled.div`
   display: grid;
@@ -66,7 +64,7 @@ const PrevPageIcon = styled.div`
     height: 30px;
     font-size: 18px;
   }
-`
+`;
 
 const Title = styled.div`
   display: -webkit-box;
@@ -83,7 +81,7 @@ const Title = styled.div`
   @media (max-width: 768px) {
     font-size: 30px;
   }
-`
+`;
 
 const PostData = styled.div`
   display: flex;
@@ -99,4 +97,4 @@ const PostData = styled.div`
     font-size: 15px;
     font-weight: 400;
   }
-`
+`;

@@ -7,16 +7,16 @@ interface InfoPageProps {
   data: {
     site: {
       siteMetadata: {
-        title: string
-        description: string
-        author: string
-        siteUrl: string
-      }
-    }
+        title: string;
+        description: string;
+        author: string;
+        siteUrl: string;
+      };
+    };
     file: {
-      publicURL: string
-    }
-  }
+      publicURL: string;
+    };
+  };
 }
 
 const InfoPage: FunctionComponent<InfoPageProps> = function ({
@@ -24,9 +24,7 @@ const InfoPage: FunctionComponent<InfoPageProps> = function ({
     site: {
       siteMetadata: { title, description, author, siteUrl },
     },
-    file: {
-      publicURL
-    }
+    file: { publicURL },
   },
 }) {
   return (
@@ -34,7 +32,7 @@ const InfoPage: FunctionComponent<InfoPageProps> = function ({
       title={title}
       description={description}
       url={siteUrl}
-      image={publicURL} 
+      image={publicURL}
     >
       <Text text={title} />
       <Text text={description} />
@@ -56,7 +54,7 @@ export const metadataQuery = graphql`
       }
     }
     file(name: { eq: "profile-image" }) {
-      publicURL 
+      publicURL
     }
   }
 `;

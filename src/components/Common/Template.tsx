@@ -1,31 +1,34 @@
 import React, { ReactNode } from 'react';
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 import GlobalStyle from './GlobalStyle';
 import Footer from './Footer';
 import { Helmet } from 'react-helmet';
 import Header from './Header';
 
 type TemplateProps = {
-  title: string 
-  description: string
-  url: string
-  image: string
-  children: ReactNode
-}
+  title: string;
+  description: string;
+  url: string;
+  image: string;
+  children: ReactNode;
+};
 
 export default function Template({
   title,
   description,
   url,
   image,
-  children
-}: TemplateProps ) {
+  children,
+}: TemplateProps) {
   return (
     <Container>
       <Helmet>
         <title>Sohee's Devlog</title>
 
-        <meta name="description" content="항상 발전하기 위해 노력하는 주니어 개발자입니다." />
+        <meta
+          name="description"
+          content="항상 발전하기 위해 노력하는 주니어 개발자입니다."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
 
@@ -46,8 +49,8 @@ export default function Template({
         <html lang="ko" />
       </Helmet>
       <GlobalStyle />
-      <Header /> 
-      {children} 
+      <Header />
+      {children}
       <Footer />
     </Container>
   );

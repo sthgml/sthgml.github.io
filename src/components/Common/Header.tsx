@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import { Layout } from 'gatsby-plugin-image';
 import { MainImageProps } from 'gatsby-plugin-image/dist/src/components/main-image';
@@ -10,18 +10,17 @@ const HeaderWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 88px;
-  height: 60px; 
-
+  height: 60px;
 
   background-color: #000;
-  
+
   a > img {
     width: 120px;
     height: 40px;
-    margin-bottom: 0; 
+    margin-bottom: 0;
   }
 
-  > div { 
+  > div {
     display: flex;
     gap: 20px;
 
@@ -36,28 +35,34 @@ const HeaderWrapper = styled.header`
   }
 `;
 
-const Header: FunctionComponent = function () { 
+const Header: FunctionComponent = function () {
   return (
     <HeaderWrapper>
       <Link to="/">
-        <img src={'./BOXO.svg'} alt="logo" /> 
+        <img src={'./BOXO.svg'} alt="logo" />
       </Link>
       <div>
-        <Link to="/about"><span>About</span> </Link>
-        <Link to="/blog/"><span>Blog</span></Link>
-        <Link to="https://boxohee.notion.site/portfolio?pvs=4" target='_blank'><span>Portfolio</span> </Link>
+        <Link to="/about">
+          <span>About</span>{' '}
+        </Link>
+        <Link to="/blog/">
+          <span>Blog</span>
+        </Link>
+        <Link to="https://boxohee.notion.site/portfolio?pvs=4" target="_blank">
+          <span>Portfolio</span>{' '}
+        </Link>
       </div>
     </HeaderWrapper>
   );
-}; 
+};
 
-export default Header
+export default Header;
 
 export interface IGatsbyImageData {
-    layout: Layout;
-    width: number;
-    height: number;
-    backgroundColor?: string;
-    images: Pick<MainImageProps, "sources" | "fallback">;
-    placeholder?: Pick<PlaceholderProps, "sources" | "fallback">;
+  layout: Layout;
+  width: number;
+  height: number;
+  backgroundColor?: string;
+  images: Pick<MainImageProps, 'sources' | 'fallback'>;
+  placeholder?: Pick<PlaceholderProps, 'sources' | 'fallback'>;
 }
