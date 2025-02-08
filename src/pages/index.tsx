@@ -48,10 +48,11 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
 export default IndexPage;
 
 const ImageWrapper = styled.div`
-  width: 100vw;
+  width: 80vw;
   aspect-ratio: 16/9;
   background-color: #fff;
-
+  margin: 0 auto;
+  
   > img {
     mix-blend-mode: exclusion;
     width: 100vw;

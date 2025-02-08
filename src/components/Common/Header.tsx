@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import { Layout } from 'gatsby-plugin-image';
@@ -42,10 +43,10 @@ const Header: FunctionComponent = function () {
         <img src={'./BOXO.svg'} alt="logo" />
       </Link>
       <div>
-        <Link to="/about">
+        <Link to="/">
           <span>About</span>{' '}
         </Link>
-        <Link to="/blog/">
+        <Link to="/blog">
           <span>Blog</span>
         </Link>
         <Link to="https://boxohee.notion.site/portfolio?pvs=4" target="_blank">
