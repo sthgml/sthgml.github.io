@@ -40,7 +40,7 @@ const Header: FunctionComponent = function () {
   return (
     <HeaderWrapper>
       <Link to="/">
-        <img src={'./BOXO.svg'} alt="logo" />
+        <img src={'/BOXO.svg'} alt="logo" />
       </Link>
       <div>
         <Link to="/">
